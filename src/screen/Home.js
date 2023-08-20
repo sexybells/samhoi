@@ -139,9 +139,10 @@ const Home = () => {
   };
 
   const attachFlag = key => {
-    const update = {...score};
-    update[key].flag = 1;
-    setScore(update);
+    console.log(1);
+    // const update = {...score};
+    // update[key].flag = 1;
+    // setScore(update);
   };
 
   return (
@@ -226,12 +227,15 @@ const Home = () => {
                   key={k}
                   style={{
                     ...styles.scoreButton,
-                    backgroundColor: v.flag === 1 && 'red',
+                    backgroundColor: k % 2 === 0 ? '#444444' : '#888888'
                   }}>
-                  <Text>{v.player1}</Text>
-                  <Text>{v.player2}</Text>
-                  <Text>{v.player3}</Text>
-                  <Text>{v.player4}</Text>
+                  <Text style={styles.score}>{v.player1}</Text>
+                  <Text style={styles.score}>{v.player2}</Text>
+                  <Text style={styles.score}>{v.player3}</Text>
+                  <Text style={styles.score}>{v.player4}</Text>
+                  {checked === 5 && (
+                    <Text style={styles.score}>{v.player5}</Text>
+                  )}
                 </TouchableOpacity>
               ))}
             </View>
@@ -448,6 +452,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
+    paddingTop: 5,
+    paddingBottom: 5,
   },
   boxInfo: {
     padding: 10,
@@ -468,4 +474,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  score: {
+    fontSize: 18
+  }
 });
